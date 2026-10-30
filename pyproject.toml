@@ -1,0 +1,48 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "heartlog"
+version = "0.1.0"
+description = "Local-first emotional diary with traceable long-term memory"
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "Private / not yet licensed" }
+authors = [{ name = "HeartLog" }]
+dependencies = [
+    "fastapi==0.162.0",
+    "uvicorn==0.54.0",
+    "SQLAlchemy==2.0.55",
+    "pydantic==2.14.1",
+    "pydantic-settings==2.16.2",
+    "alembic==1.20.1",
+    "httpx==0.28.1",
+    "python-dotenv==1.2.4",
+    "cryptography==46.0.7",
+]
+
+[project.optional-dependencies]
+dev = ["pytest==9.2.0", "ruff==0.17.3"]
+
+[tool.setuptools.packages.find]
+include = ["app*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra"
+filterwarnings = [
+    "ignore::starlette.testclient.StarletteDeprecationWarning",
+]
+
+[tool.ruff]
+line-length = 110
+target-version = "py311"
+extend-exclude = ["alembic/versions", ".deps", ".pyshim", ".tmp2", ".tmp", "backups", "data"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
+ignore = ["E501"]
+
+[tool.ruff.format]
+quote-style = "double"

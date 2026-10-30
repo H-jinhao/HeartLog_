@@ -1,0 +1,50 @@
+# Secrets and local configuration
+.env
+.env.*
+!.env.example
+
+# Local private data (never commit)
+data/
+!data/.gitkeep
+backups/
+exports/
+*.db
+*.sqlite
+*.sqlite3
+*.db-wal
+*.db-shm
+*.db.enc
+*.hlogenc
+
+# Local TLS material (never commit)
+certs/
+*.pem
+*.key
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+
+# Environments / local build helpers (this machine's ACL workaround)
+.venv/
+venv/
+.deps/
+.pyshim/
+.tmp/
+.tmp2/
+.tmp*/
+.pip-cache/
+pip-*/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+~$*
